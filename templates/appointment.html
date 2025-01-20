@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Schedule an Appointment</h1>
+    <form method="post" action="/schedule_appointment">
+        <label for="date">Choose a date:</label>
+        <input type="datetime-local" id="date" name="date">
+        <button type="submit">Schedule</button>
+    </form>
+</div>
+{% endblock %}

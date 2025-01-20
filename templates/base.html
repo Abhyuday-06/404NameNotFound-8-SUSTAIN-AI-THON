@@ -1,0 +1,33 @@
+<!-- File: base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        {% if current_user.is_authenticated %}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p style="text-align: center; padding: 1rem; background: #4CAF50; color: white;">
+            &copy; {{ year }} Mental Health Platform. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>

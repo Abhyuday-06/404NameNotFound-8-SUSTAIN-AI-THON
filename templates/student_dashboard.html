@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{ current_user.name }}</h1>
+    <a href="/quiz">Take Mental Health Quiz</a>
+</div>
+{% endblock %}

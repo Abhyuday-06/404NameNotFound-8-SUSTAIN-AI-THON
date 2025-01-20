@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Mental Health Quiz</h1>
+    <form method="post">
+        <label for="q1">Do you feel stressed frequently?</label>
+        <select id="q1" name="q1">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <label for="q2">Do you sleep well?</label>
+        <select id="q2" name="q2">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
