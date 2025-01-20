@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_required, login_user, logout_user, current_user
-from models import User, db
+from models import db, User
 from forms import LoginForm, SignupForm
 
 # Authentication Blueprint
@@ -14,7 +14,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user)
             flash('Logged in successfully!', 'success')
-            return redirect(url_for('dashboard.index'))
+            return redirect(url_for('dashboard.home'))
         flash('Invalid email or password', 'danger')
     return render_template('auth/login.html', form=form)
 
@@ -95,3 +95,4 @@ def not_found_error(error):
 def internal_error(error):
     db.session.rollback()
     return render_template('error/500.html'), 500
+

@@ -157,29 +157,29 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin
 from routes import auth_bp, dashboard_bp, error_bp, reports_bp
 from config import Config
+from utils import create_app
 
 # Initialize the Flask application
-app = Flask(__name__)
+app = create_app()
 app.config.from_object(Config)
 
-db = SQLAlchemy(app)
+# Initialize SQLAlchemy
+db.init_app(app)
+
+# Initialize Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
-# User model
-class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(150), nullable=False)
-    email = db.Column(db.String(150), unique=True, nullable=False)
-    password = db.Column(db.String(150), nullable=False)
-    role = db.Column(db.String(50), nullable=False)  # student, teacher, parent, counselor, professional
-    approved = db.Column(db.Boolean, default=False)
-
 # User loader function
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    user =  User.query.get(int(user_id))
+    if user:
+        print(f"User loaded: {user.name} (ID: {user.id})")
+    else:
+        print(f"No user found with ID: {user_id}")
+    return user
 
 # Register blueprints
 app.register_blueprint(auth_bp)
@@ -187,11 +187,14 @@ app.register_blueprint(dashboard_bp)
 app.register_blueprint(error_bp)
 app.register_blueprint(reports_bp)
 
+# Home route
 @app.route('/')
 def home():
     return render_template('home.html')
 
+# Run the application
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Ensure the database tables are created
+        # Ensure the database tables are created
+        db.create_all()
     app.run(debug=True)
