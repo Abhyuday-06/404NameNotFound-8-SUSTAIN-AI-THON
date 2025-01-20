@@ -1,5 +1,5 @@
 # Full implementation of the mental health platform using Flask
-
+"""
 from flask import Flask, render_template, redirect, url_for, flash, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
@@ -144,6 +144,53 @@ def analyze_mental_health(answers):
     return {'status': 'Good', 'recommendation': 'Maintain a healthy routine.'}
 
 # Run the application
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()  # Ensure the database tables are created
+    app.run(debug=True)
+"""
+
+# app.py - Entry point for the Flask application
+
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin
+from routes import auth_bp, dashboard_bp, error_bp, reports_bp
+from config import Config
+
+# Initialize the Flask application
+app = Flask(__name__)
+app.config.from_object(Config)
+
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
+
+# User model
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    role = db.Column(db.String(50), nullable=False)  # student, teacher, parent, counselor, professional
+    approved = db.Column(db.Boolean, default=False)
+
+# User loader function
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# Register blueprints
+app.register_blueprint(auth_bp)
+app.register_blueprint(dashboard_bp)
+app.register_blueprint(error_bp)
+app.register_blueprint(reports_bp)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Ensure the database tables are created

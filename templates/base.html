@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Health Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="navbar">
-        <a href="/">Home</a>
+        <a href="{{ url_for('home') }}">Home</a>
         {% if current_user.is_authenticated %}
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
+            <a href="{{ url_for('dashboard.dashboard_home') }}">Dashboard</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
         {% else %}
-            <a href="/login">Login</a>
-            <a href="/signup">Sign Up</a>
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.signup') }}">Sign Up</a>
         {% endif %}
     </div>
 
@@ -26,7 +26,7 @@
 
     <footer>
         <p style="text-align: center; padding: 1rem; background: #4CAF50; color: white;">
-            &copy; {{ year }} Mental Health Platform. All rights reserved.
+            &copy; {{ year | default(2025) }} Mental Health Platform. All rights reserved.
         </p>
     </footer>
 </body>

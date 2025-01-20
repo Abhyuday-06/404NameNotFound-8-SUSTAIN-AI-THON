@@ -1,23 +1,93 @@
-{% extends 'base.html' %}
+<!-- File: signup.html -->
+{% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h1>Sign Up</h1>
-    <form method="post" enctype="multipart/form-data">
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form method="POST" action="{{ url_for('auth.signup') }}">
         {{ form.hidden_tag() }}
-        <label for="name">Name:</label>
-        {{ form.name }}
-        <label for="email">Email:</label>
-        {{ form.email }}
-        <label for="password">Password:</label>
-        {{ form.password }}
-        <label for="role">Role:</label>
-        {{ form.role }}
-        <label for="child_registration_number">Child Registration Number (Parents Only):</label>
-        {{ form.child_registration_number }}
-        <label for="professional_id">Professional ID (Professionals Only):</label>
-        {{ form.professional_id }}
-        {{ form.submit }}
+    
+        <div>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}
+        </div>
+    
+        <div>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+        </div>
+    
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </div>
+    
+        <div>
+            {{ form.role.label }}<br>
+            {{ form.role }}
+        </div>
+    
+        <!-- Conditional Fields -->
+        <div id="parent-fields" style="display: none;">
+            {{ form.child_registration_number.label }}<br>
+            {{ form.child_registration_number(size=32) }}
+        </div>
+    
+        <div id="professional-fields" style="display: none;">
+            {{ form.professional_id.label }}<br>
+            {{ form.professional_id(size=32) }}
+        </div>
+    
+        <div id="student-fields" style="display: none;">
+            {{ form.student_id.label }}<br>
+            {{ form.student_id(size=32) }}
+        </div>
+    
+        <div id="teacher-fields" style="display: none;">
+            {{ form.teacher_id.label }}<br>
+            {{ form.teacher_id(size=32) }}
+        </div>
+    
+        <div id="counselor-fields" style="display: none;">
+            {{ form.counselor_license.label }}<br>
+            {{ form.counselor_license(size=32) }}
+        </div>
+    
+        <div>
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
     </form>
-</div>
+    
+    <script>
+        const roleField = document.querySelector('select[name="role"]');
+        const parentFields = document.getElementById('parent-fields');
+        const professionalFields = document.getElementById('professional-fields');
+        const studentFields = document.getElementById('student-fields');
+        const teacherFields = document.getElementById('teacher-fields');
+        const counselorFields = document.getElementById('counselor-fields');
+    
+        roleField.addEventListener('change', () => {
+            const role = roleField.value;
+    
+            // Hide all conditional fields
+            parentFields.style.display = 'none';
+            professionalFields.style.display = 'none';
+            studentFields.style.display = 'none';
+            teacherFields.style.display = 'none';
+            counselorFields.style.display = 'none';
+    
+            // Show relevant fields based on the selected role
+            if (role === 'parent') {
+                parentFields.style.display = 'block';
+            } else if (role === 'professional') {
+                professionalFields.style.display = 'block';
+            } else if (role === 'student') {
+                studentFields.style.display = 'block';
+            } else if (role === 'teacher') {
+                teacherFields.style.display = 'block';
+            } else if (role === 'counselor') {
+                counselorFields.style.display = 'block';
+            }
+        });
+    </script>
 {% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to WellNest</h1>
+        <nav>
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Your Mental Health Matters</h2>
+            <p>Welcome to the WellNest platform, where we prioritize mental health and well-being. Join us to access resources, take assessments, and connect with professionals.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 WellNest. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
