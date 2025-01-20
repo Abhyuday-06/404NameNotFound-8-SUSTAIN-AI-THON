@@ -1,5 +1,4 @@
-WellNest
----
+# WellNest
 **An integrated AI-driven solution to manage student mental healthcare with a focus on privacy**
 
 
