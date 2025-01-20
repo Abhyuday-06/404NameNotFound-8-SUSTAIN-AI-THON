@@ -1,3 +1,8 @@
+WellNest
+---
+**An integrated AI-driven solution to manage student mental healthcare with a focus on privacy**
+
+
 ## Brief Intro
 Mental health is a critical concern for students, yet it often goes unnoticed until it manifests as a crisis. WellNest aims to bridge this gap by proactively identifying mental health concerns through regular surveys, analyzing the data using machine learning, and collaborating with mental health professionals to offer personalized solutions. With a focus on anonymity and encryption, WellNest ensures students feel safe and supported.
 
