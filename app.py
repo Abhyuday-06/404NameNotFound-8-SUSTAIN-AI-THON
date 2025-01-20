@@ -164,7 +164,7 @@ app = create_app()
 app.config.from_object(Config)
 
 # Initialize SQLAlchemy
-db.init_app(app)
+#db.init_app(app)
 
 # Initialize Flask-Login
 login_manager = LoginManager()
@@ -181,11 +181,7 @@ def load_user(user_id):
         print(f"No user found with ID: {user_id}")
     return user
 
-# Register blueprints
-app.register_blueprint(auth_bp)
-app.register_blueprint(dashboard_bp)
-app.register_blueprint(error_bp)
-app.register_blueprint(reports_bp)
+# Registered blueprints are in utils.py
 
 # Home route
 @app.route('/')
