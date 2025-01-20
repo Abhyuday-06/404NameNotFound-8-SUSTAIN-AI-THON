@@ -1,20 +1,429 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Quiz</title>
+    <style>
+        body {
+            background:#66a2bc;
+            font-family: 'Verdana';
+            margin: 0;
+            padding: 20px;
+        
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:#D3D3D3;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #0e160f;
+            text-align: center;
+            font-size: 36px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .question {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .question label {
+        font-size: 1.1em;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .options {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        align-items: center;
+    }
+    .options input[type="radio"] {
+        appearance: none;
+        width: 50px;
+        height: 50px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: #f4f4f4;
+    }
+    .options input[type="radio"]:checked {
+        background-color: #007BFF; /* Blue color for checked state */
+    }
+    .options label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+    .options input[type="radio"].strongly-disagree {
+        border-color: darkred;
+    }
+    .options input[type="radio"].disagree {
+        border-color: red;
+    }
+    .options input[type="radio"].neutral {
+        border-color: orange;
+    }
+    .options input[type="radio"].agree {
+        border-color: lightgreen;
+    }
+    .options input[type="radio"].strongly-agree {
+        border-color: darkgreen;
+    }
+       
+</style>
 
-{% block content %}
-<div class="container">
-    <h1>Mental Health Quiz</h1>
-    <form method="post">
-        <label for="q1">Do you feel stressed frequently?</label>
-        <select id="q1" name="q1">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
-        <label for="q2">Do you sleep well?</label>
-        <select id="q2" name="q2">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-{% endblock %}
+
+
+    <div class="container">
+        <h1>Mental Health Quiz</h1>
+        <form method="post">
+            <div class="question">
+                <!-- Add this to the <head> section -->
+<style>
+    
+</style>
+
+<!-- Example for a single question -->
+                <div class="question">
+                    <label for="q1">1. I feel safe at school</label>
+                    <div class="options">
+                        <label>
+                            <input type="radio" id="q1-1" name="q1" value="1" class="strongly-disagree">
+                        </label>
+                        <label>
+                            <input type="radio" id="q1-2" name="q1" value="2" class="disagree">
+                        </label>
+                        <label>
+                            <input type="radio" id="q1-3" name="q1" value="3" class="neutral">
+                        </label>
+                        <label>
+                            <input type="radio" id="q1-4" name="q1" value="4" class="agree">
+                        </label>
+                        <label>
+                            <input type="radio" id="q1-5" name="q1" value="5" class="strongly-agree">
+                        </label>
+                    </div>
+                </div>
+
+                <label for="q2">2. I have friends I can trust and talk to at school</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q2-1" name="q2" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q2-2" name="q2" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q2-3" name="q2" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q2-4" name="q2" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q2-5" name="q2" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question">
+                <label for="q3">3. I feel comfortable asking teachers for help</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q3-1" name="q3" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q3-2" name="q3" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q3-3" name="q3" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q3-4" name="q3" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q3-5" name="q3" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="question">
+                <label for="q4">4. My schoolwork feels overwhelming</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q4-1" name="q4" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q4-2" name="q4" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q4-3" name="q4" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q4-4" name="q4" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q4-5" name="q4" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question">
+                <label for="q5">5. I can balance my studies with other activities</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q5-1" name="q5" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q5-2" name="q5" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q5-3" name="q5" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q5-4" name="q5" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q5-5" name="q5" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="question">
+                <label for="q6">6. I feel comfortable discussing my problems with a school counselor</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q6-1" name="q6" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q6-2" name="q6" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q6-3" name="q6" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q6-4" name="q6" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q6-5" name="q6" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+            <!-- Question 7 -->
+            <div class="question">
+                <label for="q7">7. My family supports me when I'm struggling</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q7-1" name="q7" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q7-2" name="q7" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q7-3" name="q7" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q7-4" name="q7" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q7-5" name="q7" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <label for="q8">8. I have strategies to cope with stress</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q8-1" name="q8" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q8-2" name="q8" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q8-3" name="q8" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q8-4" name="q8" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q8-5" name="q8" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <label for="q9">9. I know where to find mental health resources</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q9-1" name="q9" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q9-2" name="q9" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q9-3" name="q9" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q9-4" name="q9" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q9-5" name="q9" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <label for="q10">10. I feel stressed about tests or assignments</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q10-1" name="q10" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q10-2" name="q10" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q10-3" name="q10" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q10-4" name="q10" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q10-5" name="q10" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question">
+                <label for="q11">11. I feel happy and positive about my day</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q11-1" name="q11" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q11-2" name="q11" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q11-3" name="q11" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q11-4" name="q11" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q11-5" name="q11" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <label for="q12">12. I have trouble sleeping at night</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q12-1" name="q12" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q12-2" name="q12" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q12-3" name="q12" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q12-4" name="q12" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q12-5" name="q12" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <label for="q13">13. I feel tired during school hours</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q13-1" name="q13" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q13-2" name="q13" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q13-3" name="q13" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q13-4" name="q13" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q13-5" name="q13" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <label for="q14">14. I enjoy spending time with friends and family</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q14-1" name="q14" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q14-2" name="q14" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q14-3" name="q14" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q14-4" name="q14" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q14-5" name="q14" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <label for="q15">15. I feel confident about handling my schoolwork</label>
+                <div class="options">
+                    <label>
+                        <input type="radio" id="q15-1" name="q15" value="1" class="strongly-disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q15-2" name="q15" value="2" class="disagree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q15-3" name="q15" value="3" class="neutral">
+                    </label>
+                    <label>
+                        <input type="radio" id="q15-4" name="q15" value="4" class="agree">
+                    </label>
+                    <label>
+                        <input type="radio" id="q15-5" name="q15" value="5" class="strongly-agree">
+                    </label>
+                </div>
+            </div>
+
+
+<!-- Add questions 7 to 15 in a similar manner -->
+
+            <!-- Add all remaining questions (3-15) similarly -->
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
