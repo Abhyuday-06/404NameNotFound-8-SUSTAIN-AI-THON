@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="navbar">
+    <div class="navbar ">
         <a href="{{ url_for('home') }}">Home</a>
         {% if current_user.is_authenticated %}
             <a href="{{ url_for('dashboard.dashboard_home') }}">Dashboard</a>
             <a href="{{ url_for('auth.logout') }}">Logout</a>
         {% else %}
-            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.login') }}" >Login</a>
             <a href="{{ url_for('auth.signup') }}">Sign Up</a>
         {% endif %}
     </div>
@@ -25,7 +25,7 @@
     </div>
 
     <footer>
-        <p style="text-align: center; padding: 1rem; background: #4CAF50; color: white;">
+        <p style="text-align: center; padding: 1rem; background: #333; color: white;">
             &copy; {{ year | default(2025) }} Mental Health Platform. All rights reserved.
         </p>
     </footer>

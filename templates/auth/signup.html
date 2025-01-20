@@ -2,8 +2,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="signup-container">
-    <h2>Sign Up</h2>
+<div class="container">
+    <h2 style="color: black;">Sign Up</h2>
     <form method="POST" action="{{ url_for('auth.signup') }}">
         {{ form.hidden_tag() }}
     
@@ -54,8 +54,9 @@
         </div>
     
         <div>
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class_="btn custom-btn") }}
         </div>
+        
     </form>
     
     <script>
